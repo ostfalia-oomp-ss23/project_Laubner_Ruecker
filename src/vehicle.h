@@ -1,10 +1,17 @@
-#include <string>
+#pragma once
+#include <iostream>
 
-class Vehicle {
-    public:
-        void read();
-        void print();
-        std::string brand;
-        std::string model;
-        int year; 
+#define STANDARD_STRING_LENGTH 64
+
+class Vehicle 
+{
+
+public:
+
+    void read();
+    void print();
+
+    std::string brand;
+    std::string model;
+    int year;
 };
