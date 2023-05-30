@@ -5,13 +5,17 @@
 
 class Vehicle 
 {
+private:
+    
 
 public:
 
     void read();
     void print();
 
+    int mileage;
     std::string brand;
     std::string model;
     int year;
+
 };
