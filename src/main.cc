@@ -1,8 +1,7 @@
 #include "vehicle.h"
+#include "vehicleManager.h"
 #include <iostream>
-#define NUMBER_OF_VEHICLES 32
 
-Vehicle vehicles[NUMBER_OF_VEHICLES];
 
 bool wantToReadAnotherVehicle()
 {
@@ -14,25 +13,74 @@ bool wantToReadAnotherVehicle()
 
 int main(int argc, char* argv[])
 {
-    std::cout << "Rental Company Example Started" << std::endl;
-    
-    int id = 0;
-    
-    do
-    {
-        Vehicle* vehicle = &vehicles[id];
-        vehicle -> read();
-        id++;
-    } while (wantToReadAnotherVehicle());
+    int id;
+	VehicleManager * choose;
+	int Vchoose;
+	do 
+	{
+		 Vchoose = choose->Menu();
 
-    std::cout << std::endl;
+		switch (Vchoose)
+		{
+			case 1:
+				// Fahrzeug einlesen und speichern
+				do
+				{
+					// Fahrzeug Anlegen(konst Variablen)
+					Vehicle TempVehicle = Vehicle::readVehicle();
+					// Nicht const Variablen anlegen
+					TempVehicle.setInspectionDate(TempVehicle.readHUdays());
 
-    for(int i=0; i<id; i++)
-    {
-        Vehicle* vehicle = &vehicles[i];
-        std::cout << "Vehicle id=" << i << std::endl;
-        vehicle->print();
-    }
-    
-    return 0;
+					TempVehicle.setMileage(TempVehicle.readMileage());
+					// ID für das Vehicle bestimmen
+					TempVehicle.setID(TempVehicle.getNewID());
+					// Eingegebenes Fahrzeug ausgeben
+					TempVehicle.print();
+					// Fahrzeug ausgeben
+					choose->WriteVehicle(TempVehicle);
+					// Abfrage zur weiteren Eingabe
+				} while (wantToReadAnotherVehicle());
+			break;
+
+			case 2:
+				// Fin Fahrezug ausgeben
+				do
+				{	
+					Vehicle * TempRead;
+					choose->ReadVehicle(TempRead->readID());
+				} while (wantToReadAnotherVehicle());
+			break;
+
+			case 3:
+			// Alle Fahrzeuge ausgeben
+				choose->ReadAllVehicles();
+			break;
+
+			case 4:
+			// Fahrzeug modifizieren
+				do
+				{	
+					Vehicle * TempRead;
+					choose->modVehicle(TempRead->readID());
+
+				} while (wantToReadAnotherVehicle());
+			break;
+			
+			case 5:
+			// Fahrzeug entfernen
+				Vehicle * TempRead;
+				choose->delVehicle(TempRead->readID());
+
+			break;
+
+			case 6:
+				// Program wird beendet!
+				std::cout << "Programm wird beendet!\n\r";
+				return 0;
+				
+			default:
+				Vchoose = 0;
+				std::cout << "Bitte prüfen sie ob ihre eingabe korrekt ist!\n\r";
+		}
+	}while (!(Vchoose == 6));
 }

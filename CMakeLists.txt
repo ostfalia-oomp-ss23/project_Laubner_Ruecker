@@ -18,4 +18,8 @@ add_executable(${TARGET_NAME}
 	src/vehicle.cc
 	src/vehicle.h
 	src/main.cc
+	src/vehicleManager.cc
+	src/vehicleManager.h
+	src/time.h
+	src/time.cc
 )
