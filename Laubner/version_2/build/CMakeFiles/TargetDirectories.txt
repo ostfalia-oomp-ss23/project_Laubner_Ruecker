@@ -1,0 +1,3 @@
+/home/jan/OOP/Laubner/version_2/build/CMakeFiles/cpp_project_vehicle_rental.dir
+/home/jan/OOP/Laubner/version_2/build/CMakeFiles/edit_cache.dir
+/home/jan/OOP/Laubner/version_2/build/CMakeFiles/rebuild_cache.dir

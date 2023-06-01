@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/cpp_project_vehicle_rental.dir/src/vehicle.cpp.o CMakeFiles/cpp_project_vehicle_rental.dir/src/main.cpp.o -o cpp_project_vehicle_rental 
