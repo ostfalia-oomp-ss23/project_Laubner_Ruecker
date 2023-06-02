@@ -1,9 +1,8 @@
 #include "vehicle.hpp"
 
-
 #include <map>
 
-std::map<int, Vehicle> vehicleMap;
+std::map<int, std::unique_ptr<Vehicle>> vehicleMap;
 
 bool wantToReadAnotherVehicle()
 {
@@ -22,9 +21,8 @@ int main(int argc, char const *argv[])
 
     do
     {
-        Vehicle* vehicle = new Vehicle();
-        vehicle->readVehicle();
-        vehicleMap.emplace(id,*vehicle);
+        Vehicle vehicle = Vehicle::readVehicle();
+        vehicleMap.emplace(id,vehicle);
         id++;
     } while (wantToReadAnotherVehicle());
     
@@ -33,7 +31,7 @@ int main(int argc, char const *argv[])
         vehicleMap[i].printVehicle();
     }
     
-
+    
 
     std::cout << "\n-----Programm wird beendet-----!" << std::endl;
     return 0;
